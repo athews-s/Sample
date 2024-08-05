@@ -6,7 +6,7 @@ env:
   API_HOST: us-east-a.apiconnect.automation.ibm.com
   PLATFORM_API_PREFIX: platform-api.us-east-a.apiconnect.automation.ibm.com
   PROVIDER_ORG: acme-coffee-roasters
-  API_FILES: <file/files name>
+  API_FILES: order-api_1.0.0.yaml
 
 jobs:
   run-discovery:
