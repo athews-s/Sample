@@ -1,0 +1,115 @@
+openapi: 3.0.3
+info:
+  title: Acme Shipping API
+  version: 1.0.0
+  description: REST API for managing shipping orders and tracking shipments.
+servers:
+  - url: https://acme-shipping.onrender.com
+    description: Production server
+  - url: http://localhost:3000
+    description: Local server
+paths:
+  /shipments:
+    get:
+      summary: List all shipments
+      description: Returns a list of all shipments.
+      responses:
+        '200':
+          description: A JSON array of shipments
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Shipment'
+    post:
+      summary: Create a new shipment
+      description: Creates a new shipping order.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewShipment'
+      responses:
+        '201':
+          description: Shipment created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipment'
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+  /shipments/{id}:
+    get:
+      summary: Get shipment by ID
+      description: Returns details of a specific shipment.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The shipment ID
+      responses:
+        '200':
+          description: Shipment details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipment'
+        '404':
+          description: Shipment not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+components:
+  schemas:
+    Shipment:
+      type: object
+      properties:
+        id:
+          type: string
+          example: SHIP12345
+        status:
+          type: string
+          example: in_transit
+        origin:
+          type: string
+          example: New York, NY
+        destination:
+          type: string
+          example: San Francisco, CA
+        estimatedDelivery:
+          type: string
+          format: date
+          example: 2025-06-15
+      required:
+        - id
+        - status
+        - origin
+        - destination
+        - estimatedDelivery
+    NewShipment:
+      type: object
+      properties:
+        origin:
+          type: string
+          example: New York, NY
+        destination:
+          type: string
+          example: San Francisco, CA
+      required:
+        - origin
+        - destination
