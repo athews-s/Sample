@@ -5,7 +5,7 @@ on: [pull_request, workflow_dispatch, push]
 env:
   API_HOST: us-east-a.apiconnect.automation.ibm.com
   PROVIDER_ORG: acme-coffee-roasters
-  API_FOLDERS: APIFolder
+  API_FOLDERS: API
 
 jobs:
   check_changes_job:
