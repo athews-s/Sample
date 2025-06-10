@@ -1,6 +1,6 @@
 swagger: '2.0'
 info:
-  title: sports-api
+  title: new-sports-api
   x-ibm-name: sports-api
   version: 1.0.1
 schemes:
