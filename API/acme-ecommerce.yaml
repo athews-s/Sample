@@ -1,8 +1,8 @@
 openapi: 3.0.3
 info:
   title: ACME Coffee Roaster Ecommerce API
-  version: 1.0.2
-  description: REST API for coffee products and orders placed on Acme Beans website.
+  version: 1.0.3
+  description: REST API for coffee as well as beans products and orders placed on Acme Beans website.
 servers:
   - url: http://localhost:3000
     description: Local server
